@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+
+// import './stylenote.scss';
+
 import App from './App';
+// import axios from "axios";
 import reportWebVitals from './reportWebVitals';
+// axios.defaults.baseURL = 'https://notes.devlop.tech/api';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

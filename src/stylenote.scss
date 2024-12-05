@@ -1,0 +1,302 @@
+@import "_variable.scss";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .color-picker {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+  
+  .notes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 60px;
+    margin-left: 100px;
+    align-items: stretch;
+  
+    .note-card {
+      flex: 1 1 calc(33.333% - 20px);
+      max-width: calc(33.333% - 20px);
+      background-color:$secondcolor;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 230px;
+  
+      &:hover {
+        transform: translateY(-10px);
+      }
+  
+      &.editing {
+        border: 2px solid $firstcolor;
+      }
+  
+      .note-title-input,
+      .note-content-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+  
+      .note-content-input {
+        height: 100px;
+        resize: none;
+      }
+  
+      .color-picker {
+        margin-top: 10px;
+  
+        input {
+          width: 50%;
+          height: 50%;
+          border: none;
+          cursor: pointer;
+        }
+      }
+  
+      .note-actions {
+        display: flex;
+        margin: 0;
+      }
+  
+      .note-title {
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+  
+      .note-content {
+        font-size: 16px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        color: black;
+      }
+  
+      .note-date {
+        font-size: 12px;
+        color: black;
+        margin-top: 8px;
+      }
+  
+      .note-shared-by {
+        font-size: 12px;
+        color: black;
+  
+        .shared-user-initials {
+          display: inline-block;
+          margin-right: 8px;
+          font-weight: bold;
+          background-color: black;
+          border-radius: 50%;
+          padding: 8px;
+          text-align: center;
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+  }
+  
+  .loading-text {
+    font-size: 80px;
+    color: #555;
+    text-align: center;
+    margin-top: 20%;
+    font-weight: bold;
+  
+    .dot-1, .dot-2, .dot-3 {
+      animation: dots 1.5s infinite;
+  
+      &:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+  
+      &:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+    }
+  }
+  
+  @keyframes dots {
+    0%, 20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 120px;
+    margin-top: 20px;
+  
+    .user-header {
+      display: flex;
+      align-items: center;
+  
+      h2 {
+        font-size: 24px;
+        margin-right: 10px;
+      }
+  
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+  
+    .search-container {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+  margin-right: 15px;
+      .search-wrapper {
+        position: relative;
+  
+        .search-input {
+          width: 500px;
+          padding: 10px;
+          padding-right: 30px;
+          font-size: 16px;
+          border: none;
+          outline: none;
+          border-radius: 20px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+  
+        .search-icon {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 20px;
+          color: black;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  
+  .top{
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; }
+  .note-update{
+    display: flex;
+    justify-content: space-between;
+  }
+  .bigtitle{
+    margin-left: 120px;
+    margin-top: 30px;
+    
+  }
+  button {
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  
+    .fa-edit, .fa-trash, .fa-save, .fa-times {
+      margin-right: 5px;
+    }
+  
+    &:hover {
+      background-color: #738696;
+    }
+  
+    &.save-btn {
+      color: black;
+      font-size: 20px;
+      background-color: transparent;
+    }
+  
+    &.cancel-btn, &.edit-btn, &.delete-btn {
+      color: black;
+      background-color: transparent;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .notes-container {
+      flex-direction: column;
+    
+      margin-left: 0;
+      margin-right: 0;
+      align-items: center; 
+      justify-content: center;
+      .note-card {
+        flex: 1 1 100%;
+        max-width: 100%;
+       align-items: center; 
+       justify-content: center;
+
+      }
+    }
+  .search-wrapper{
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
+    .search-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  
+    .header {
+      flex-direction: column;
+      margin-left: 0;
+      margin-top: 10px;
+  
+      .user-header h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+    }
+  
+    button {
+      font-size: 12px;
+      padding: 6px 8px;
+    }
+       
+  }
+  
